@@ -1,0 +1,5 @@
+Flask==1.0.2
+Flask-Cors==1.8.0
+gunicorn==19.9.0
+python-dotenv==0.9.1
+pytest

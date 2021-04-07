@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  backend:
+    restart: always
+    build: ./backend
+    ports:
+      - "5000:5000"
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+
+  frontend:
+    restart: always
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+    command: npm start
+    depends_on:
+      - backend
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "8080:80"
+    links:
+      - backend
+      - frontend
+    depends_on:
+      - backend
+      - frontend
