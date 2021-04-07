@@ -44,6 +44,12 @@ Python3 and Nodejs are required
 
 
 #### 2. Docker compose 
+
+Step 1: Create network
+```sh
+docker network create proxy-network
+```
+Step 2:
 ```sh
 docker-compose up -d
 ```
