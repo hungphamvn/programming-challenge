@@ -4,7 +4,7 @@
 ## How to run it
 
 ### 1. Mannual:
-Make sure python3.x and nodejs are installed on your machine
+Python3 and Nodejs are required
 1.1 Backend
 
  Step 1: 

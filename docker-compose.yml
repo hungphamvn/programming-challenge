@@ -7,17 +7,21 @@ services:
     ports:
       - "5000:5000"
     command: gunicorn --bind 0.0.0.0:5000 manage:app
+    networks: 
+      - proxy-network
 
   frontend:
     restart: always
     build: ./frontend
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     env_file:
       - ./frontend/.env
     command: npm start
     depends_on:
       - backend
+    networks: 
+      - proxy-network
 
   nginx:
     restart: always
@@ -30,3 +34,9 @@ services:
     depends_on:
       - backend
       - frontend
+    networks: 
+      - proxy-network
+
+networks: 
+  proxy-network:
+    external: true
